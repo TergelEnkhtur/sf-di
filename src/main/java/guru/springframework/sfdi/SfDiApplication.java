@@ -1,9 +1,6 @@
 package guru.springframework.sfdi;
 
-import guru.springframework.sfdi.controllers.ConstructorInjectedController;
-import guru.springframework.sfdi.controllers.MyController;
-import guru.springframework.sfdi.controllers.PropertyInjectedController;
-import guru.springframework.sfdi.controllers.SetterInjectedController;
+import guru.springframework.sfdi.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -13,6 +10,9 @@ public class SfDiApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(SfDiApplication.class, args);
+
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+		System.out.println(i18nController.sayHello());
 
 		MyController myController = (MyController) ctx.getBean("myController");
 
