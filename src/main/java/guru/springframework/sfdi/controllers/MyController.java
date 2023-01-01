@@ -1,13 +1,19 @@
 package guru.springframework.sfdi.controllers;
 
+import guru.springframework.sfdi.services.GreetingService;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class MyController {
 
-    public String sayHello(){
-        System.out.println("Hello World!!!");
+    private final GreetingService greetingService;
 
-        return "Hi Folks!";
+    //@Autowired          - optional as of Spring 4.2
+    public MyController(GreetingService greetingService) { //@Qualifier no need because of @Primary
+        this.greetingService = greetingService;
+    }
+
+    public String sayHello(){
+        return greetingService.sayGreeting();
     }
 }
