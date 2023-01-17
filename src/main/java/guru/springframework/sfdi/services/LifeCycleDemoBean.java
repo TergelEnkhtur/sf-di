@@ -1,3 +1,4 @@
+/*
 package guru.springframework.sfdi.services;
 
 import org.springframework.beans.BeansException;
@@ -64,3 +65,4 @@ public class LifeCycleDemoBean implements InitializingBean, DisposableBean, Bean
         System.out.println("## - After init called by Bean Post Processor");
     }
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package guru.springframework.sfdi.services;
 
 import org.springframework.beans.BeansException;
@@ -26,3 +27,4 @@ public class CustomBeanPostProcessor implements BeanPostProcessor {
         return bean;
     }
 }
+*/
