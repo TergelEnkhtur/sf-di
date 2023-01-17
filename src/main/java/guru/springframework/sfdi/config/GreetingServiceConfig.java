@@ -7,7 +7,7 @@ import guru.springframework.sfdi.repositories.EnglishGreetingRepositoryImpl;
 import guru.springframework.sfdi.services.*;
 import org.springframework.context.annotation.*;
 
-@ImportResource("classpath:sfdi-config.xml") // could put here or in main class
+@ImportResource("classpath:sfdi-config.xml") // Tells spring to bring in xml configuration. Could put here or in main class
 @Configuration
 public class GreetingServiceConfig {
 
@@ -52,9 +52,9 @@ public class GreetingServiceConfig {
     }
 
     //@Bean - refactored to be used by XML
-    ConstructorGreetingService constructorGreetingService() {
-        return new ConstructorGreetingService();
-    }
+    //ConstructorGreetingService constructorGreetingService() {
+        //return new ConstructorGreetingService();
+    //}
 
     @Bean
     PropertyInjectedGreetingService propertyInjectedGreetingService() {
