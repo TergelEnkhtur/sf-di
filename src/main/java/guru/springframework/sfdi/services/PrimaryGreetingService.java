@@ -3,8 +3,8 @@ package guru.springframework.sfdi.services;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
-@Primary
-@Service
+//@Primary - refactored to Java Configuration
+//@Service
 public class PrimaryGreetingService implements GreetingService{
 
     @Override
