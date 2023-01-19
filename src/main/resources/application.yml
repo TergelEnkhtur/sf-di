@@ -1,7 +1,22 @@
+# this is a comment
 spring:
   profiles:
-    active: dog, EN, dev
+    active: #dog, EN, prod -can do list either way
+      - dog
+      - EN
+      - prod
 guru:
   username: YmlUserName
   password: YmlPassword
   jdbcurl: YmlUrl
+
+# YAML file separator means another YAML conf file
+# Same as another file named application-prod.yml
+---
+spring:
+  active:
+    profiles: prod
+guru:
+  username: YmlProdUserName
+  password: YmlProdPassword
+  jdbcurl: YmlProdUrl
