@@ -1,5 +1,6 @@
 package guru.springframework.sfdi;
 
+import guru.springframework.sfdi.config.SfConfiguration;
 import guru.springframework.sfdi.controllers.*;
 import guru.springframework.sfdi.datasource.FakeDataSource;
 import guru.springframework.sfdi.services.PrototypeBean;
@@ -17,7 +18,7 @@ public class SfDiApplication {
 		ApplicationContext ctx = SpringApplication.run(SfDiApplication.class, args);
 
 		PetController petController = ctx.getBean("petController", PetController.class);
-		System.out.println("--- The Best Pet is ---");
+		System.out.println("--- The Best Pet is");
 		System.out.println(petController.whichPetIsTheBest());
 
 		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
@@ -40,7 +41,7 @@ public class SfDiApplication {
 		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) ctx.getBean("constructorInjectedController");
 		System.out.println(constructorInjectedController.getGreeting());
 
-		System.out.println("---- Bean Scopes ----");
+		System.out.println("---- Bean Scopes");
 		SingletonBean singletonBean1 = ctx.getBean(SingletonBean.class);
 		System.out.println(singletonBean1.getMyScope());
 		SingletonBean singletonBean2 = ctx.getBean(SingletonBean.class);
@@ -51,10 +52,17 @@ public class SfDiApplication {
 		PrototypeBean prototypeBean2 = ctx.getBean(PrototypeBean.class);
 		System.out.println(prototypeBean2.getMyScope());
 
+		System.out.println("--- Fake Data Source");
 		FakeDataSource fakeDataSource = ctx.getBean(FakeDataSource.class);
 		System.out.println(fakeDataSource.getUsername());
 		System.out.println(fakeDataSource.getPassword());
 		System.out.println(fakeDataSource.getJdbcurl());
+
+		System.out.println("--- Config Props Bean");
+		SfConfiguration sfConfiguration = ctx.getBean(SfConfiguration.class);
+		System.out.println(sfConfiguration.getUsername());
+		System.out.println(sfConfiguration.getPassword());
+		System.out.println(sfConfiguration.getJdbcurl());
 	}
 
 }

@@ -14,13 +14,22 @@ import org.springframework.context.annotation.*;
 public class GreetingServiceConfig {
 
     @Bean
+    FakeDataSource fakeDataSource(SfConfiguration sfConfiguration) {
+        FakeDataSource fakeDataSource = new FakeDataSource();
+        fakeDataSource.setUsername(sfConfiguration.getUsername());
+        fakeDataSource.setPassword(sfConfiguration.getPassword());
+        fakeDataSource.setJdbcurl(sfConfiguration.getJdbcurl());
+        return fakeDataSource;
+    }
+    /* too verbose. refactored
+    @Bean
     FakeDataSource fakeDataSource(@Value("${guru.username}") String username, @Value("${guru.password}") String password, @Value("${guru.jdbcurl}") String jdbcurl) { //{} for Spring Expression Language
         FakeDataSource fakeDataSource = new FakeDataSource();
         fakeDataSource.setUsername(username);
         fakeDataSource.setPassword(password);
         fakeDataSource.setJdbcurl(jdbcurl);
         return fakeDataSource;
-    }
+    }*/
 
     @Bean
     PetServiceFactory petServiceFactory() {
