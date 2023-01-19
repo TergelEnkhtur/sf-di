@@ -7,18 +7,20 @@ import guru.springframework.sfdi.repositories.EnglishGreetingRepository;
 import guru.springframework.sfdi.repositories.EnglishGreetingRepositoryImpl;
 import guru.springframework.sfdi.services.*;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
 
+@EnableConfigurationProperties(SfConstructorConfig.class)
 @ImportResource("classpath:sfdi-config.xml") // Tells spring to bring in xml configuration. Could put here or in main class
 @Configuration
 public class GreetingServiceConfig {
 
     @Bean
-    FakeDataSource fakeDataSource(SfConfiguration sfConfiguration) {
+    FakeDataSource fakeDataSource(SfConstructorConfig sfConstructorConfig) {
         FakeDataSource fakeDataSource = new FakeDataSource();
-        fakeDataSource.setUsername(sfConfiguration.getUsername());
-        fakeDataSource.setPassword(sfConfiguration.getPassword());
-        fakeDataSource.setJdbcurl(sfConfiguration.getJdbcurl());
+        fakeDataSource.setUsername(sfConstructorConfig.getUsername());
+        fakeDataSource.setPassword(sfConstructorConfig.getPassword());
+        fakeDataSource.setJdbcurl(sfConstructorConfig.getJdbcurl());
         return fakeDataSource;
     }
     /* too verbose. refactored

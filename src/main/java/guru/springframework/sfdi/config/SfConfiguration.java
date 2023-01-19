@@ -3,6 +3,7 @@ package guru.springframework.sfdi.config;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
+// Mutable Bean - this can be changed at runtime so can be less secure
 @ConfigurationProperties("guru") // binds guru. properties
 @Configuration
 public class SfConfiguration {
