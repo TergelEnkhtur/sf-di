@@ -9,7 +9,6 @@ import guru.springframework.sfdi.services.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 
-@PropertySource("classpath:datasource.properties")
 @ImportResource("classpath:sfdi-config.xml") // Tells spring to bring in xml configuration. Could put here or in main class
 @Configuration
 public class GreetingServiceConfig {
